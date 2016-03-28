@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
+import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var youtubePlayer: YTPlayerView!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+        youtubePlayer.loadWithVideoId("FFMw_Y_iCZs")
+        youtubePlayer.delegate = self
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch _ {
+            print("error occured")
+        }
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
+}
 
-
+extension ViewController: YTPlayerViewDelegate {
+    
+    func playerViewDidBecomeReady(playerView: YTPlayerView!) {
+        self.spinner.stopAnimating()
+    }
 }
 

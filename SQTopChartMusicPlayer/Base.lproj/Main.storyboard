@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +18,32 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8Y-4l-Bb1" customClass="YTPlayerView">
+                                <rect key="frame" x="20" y="143" width="560" height="315"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="d8Y-4l-Bb1" secondAttribute="height" multiplier="16:9" id="7gO-S7-LVd"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nET-cj-JX3">
+                                <rect key="frame" x="282" y="282" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d8Y-4l-Bb1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="48K-kB-Z4m"/>
+                            <constraint firstItem="d8Y-4l-Bb1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9lX-b0-vNM"/>
+                            <constraint firstItem="d8Y-4l-Bb1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BRC-Ka-1KN"/>
+                            <constraint firstItem="nET-cj-JX3" firstAttribute="centerY" secondItem="d8Y-4l-Bb1" secondAttribute="centerY" id="MAg-MA-5WH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d8Y-4l-Bb1" secondAttribute="trailing" id="g1A-ri-E53"/>
+                            <constraint firstItem="nET-cj-JX3" firstAttribute="centerX" secondItem="d8Y-4l-Bb1" secondAttribute="centerX" id="qff-rL-TRz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="spinner" destination="nET-cj-JX3" id="uk9-h5-eb7"/>
+                        <outlet property="youtubePlayer" destination="d8Y-4l-Bb1" id="IOg-tf-nMO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
